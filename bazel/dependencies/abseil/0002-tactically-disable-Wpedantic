@@ -1,0 +1,19 @@
+diff --git a/absl/numeric/int128_have_intrinsic.inc b/absl/numeric/int128_have_intrinsic.inc
+index 51e4b9d4..41571d01 100644
+--- a/absl/numeric/int128_have_intrinsic.inc
++++ b/absl/numeric/int128_have_intrinsic.inc
+@@ -17,6 +17,8 @@
+ // representation when ABSL_HAVE_INTRINSIC_INT128 is defined. This file is
+ // included by int128.h and relies on ABSL_INTERNAL_WCHAR_T being defined.
+ 
++#pragma GCC diagnostic ignored "-Wpedantic"
++
+ namespace int128_internal {
+ 
+ // Casts from unsigned to signed while preserving the underlying binary
+@@ -305,3 +307,5 @@ constexpr int128 operator<<(int128 lhs, int amount) {
+ constexpr int128 operator>>(int128 lhs, int amount) {
+   return static_cast<__int128>(lhs) >> amount;
+ }
++
++#pragma GCC diagnostic pop
